@@ -7,6 +7,10 @@ const UserSchema={
     ref:"User",
     required:true
 }, 
+buyer:  { type:mongoose.Schema.Types.ObjectId,
+    ref:"User",
+    required:true
+}, 
 price:{type:Number,require:true},
 
 
