@@ -30,12 +30,15 @@ router.get("/login",(req,res)=>{
   res.render("loginPage", {path: '/login'})
 })
 router.post("/login",(req,res)=>{
+  console.log(req.body.user);
   User.findOne({email:req.body.user.email.toUpperCase()},(err,found)=>{
-    if (err || found==null) {
+    if (err) {
       console.log(err);
+      console.log(found +"error");
     } else {
       if(crypto.createHash('md5').update(req.body.user.password).digest("hex") == hash){
         req.session.loggedin=true;
+        console.log(found +"error no");
         res.redirect("/"+found.id)
       }
       else{
