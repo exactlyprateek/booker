@@ -26,7 +26,7 @@ router.get("/login",(req,res)=>{
 })
 router.post("/login",(req,res)=>{
   User.findOne({email:req.body.user.email.toUpperCase()},(err,found)=>{
-    if (err) {
+    if (err || found==null) {
       console.log(err);
     } else {
       if(crypto.createHash('md5').update(req.body.user.password).digest("hex") == hash){
@@ -40,12 +40,15 @@ router.post("/login",(req,res)=>{
   })
 })
 router.get('/register',(req,res)=>{
-res.render('register');
+  res.render("loginPage", {path: '/login'})
 });
 router.post("/register",(req,res)=>{
   var user1= req.body.user;
+  console.log(user1)
   user1['password']=crypto.createHash('md5').update(user1.password).digest("hex");
+  console.log(user1)
   User.create(user1,(err,found)=>{
+    console.log('error not here')
     if (err) {
       console.log('err')
     } else {

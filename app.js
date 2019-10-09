@@ -8,9 +8,11 @@ var bodyParser=require('body-parser')
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
-
+var mongoose=require('mongoose')
+var mcentral=require('mongoose')
 var app = express();
-
+mongoose.connect("mongodb+srv://vvip:rohan123@cluster0-g6oqn.mongodb.net/test?retryWrites=true&w=majority");
+mcentral.connect("mongodb+srv://dev:jcb@bookdbfake-rbyfo.mongodb.net/test?retryWrites=true&w=majority")
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
