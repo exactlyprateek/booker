@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var expressSession=require('express-sessions');
+var bodyParser=require('body-parser')
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -15,10 +16,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('trust proxy', 1); // trust first proxy
 
 app.use('/', indexRouter)
 app.use('/:id', userRouter);
@@ -40,6 +42,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000);
+app.listen(9000);
 
 module.exports = app;
