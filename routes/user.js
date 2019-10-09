@@ -7,6 +7,7 @@ var mongoose = require("mongoose");
 var mcentral = require("mongoose");
 var User = require("../models/user");
 var Book = require("../models/user");
+var Bookorg=require("../models/bookorg")
 router.use(
   expressSession({
     secret: "sab ladkiyan rajput ki behen hai",
@@ -101,7 +102,7 @@ router.get("/add-book", (req, res, next) => {
       console.log(err);
     } else {
 
-      db.collection('bookorgs').find({}, (err, foundbk) => {
+      Bookorg.find({}, (err, foundbk) => {
         if(err){
           console.log(err);
         }else {
