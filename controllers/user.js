@@ -12,12 +12,12 @@ function getUser(userId) {
 }
 
 exports.getProfile = function(req, res, next) {
-  var user = getUser(req.body.id);
+  var user = getUser(req.params.id);
 
   res.render("profile", {
-    title: `${user.name}'s Pofile`,
-    path: "/user/profile",
-    user: user
+    title: `Pofile Page`,
+    path: "/user/profile"
+    // user: user
   });
 };
 
