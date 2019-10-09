@@ -6,7 +6,12 @@ var mcentral=require('mongoose');
 var User=require("../models/user");
 
 /* GET home page. */
-
+var expressSession=require('express-session');
+router.use(expressSession({
+  secret: 'sab ladkiyan rajput ki behen hai',
+  resave: true,
+  saveUninitialized: true
+}));
 
 
 router.get("/", function(req, res, next) {
