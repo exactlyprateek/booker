@@ -15,7 +15,7 @@ router.get('/search-results', function(req, res, next) {
 });
 
 router.get('/add-book', function(req, res, next) {
-  res.render('index', { title: 'Add new Books' });
+  res.render('addBook', { title: 'Add new Books' });
 });
 
 router.get('/borrow-books', function(req, res, next) {
