@@ -1,11 +1,81 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('includes/head.ejs') %> 
+    <main class="page landing-page">
+      <section
+        class="clean-block clean-hero"
+        style="color: rgba(255,255,255,0);min-height: 500;height: 500;"
+      >
+        <div class="text">
+          <h2 style="letter-spacing: 11px;font-size: 62px;">
+            THE BOOKERS CLUB
+          </h2>
+          <p style="font-size: 21px;line-height: 44px;">
+            At Booker you can find books to donate, sell, borrow or share, hence
+            helping the society
+          </p>
+        </div>
+      </section>
+      <section class="clean-block clean-info dark" id="#info">
+        <div class="container">
+          <div class="block-heading">
+            <h2 class="text-info">Info</h2>
+            <p>
+              At Booker you can find books to donate, sell, borrow or share.
+              Here you can help the society by reusing old books and help reduce
+              the use of paper
+            </p>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <img class="img-thumbnail" src="/images/book5.jpg" />
+            </div>
+            <div class="col-md-6">
+              <img class="img-thumbnail" src="/images/book3.jpg" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="clean-block features">
+        <div class="container">
+          <div class="block-heading">
+            <h2 class="text-info">Features</h2>
+            <p>
+              Here you can help the society by reusing old books and help reduce
+              the use of paper
+            </p>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-5 feature-box">
+              <h4>Sell Books</h4>
+              <p>Sell books to help other curious people</p>
+            </div>
+            <div class="col-md-5 feature-box">
+              <h4>Buy at your ease</h4>
+              <p>Buy books at the lowest prices</p>
+            </div>
+            <div class="col-md-5 feature-box">
+              <h4>Share for all</h4>
+              <p>Share books super easily</p>
+            </div>
+            <div class="col-md-5 feature-box">
+              <h4>Borrow as you need</h4>
+              <p>
+                Borrow for your specific time period as per your requirement
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="clean-block about-us">
+        <div class="container">
+          <div class="block-heading">
+            <h2 class="text-info">About Us</h2>
+            <p>
+              At Booker you can find books to donate, sell, borrow or share,
+              hence helping the society
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('includes/end.ejs') %> 

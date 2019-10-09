@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1); // trust first proxy
 
 app.use('/', indexRouter)
-app.use('/:userId', userRouter);
+app.use('/:id', userRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
