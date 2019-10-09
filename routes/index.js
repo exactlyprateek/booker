@@ -5,6 +5,16 @@ var mongoose=require("mongoose");
 var mcentral=require('mongoose');
 var User=require("../models/user");
 
+function getUser(userId) {
+  User.findById(userId, (err, found) => {
+    if (err) {
+      console.log(err);
+    } else {
+      return found;
+    }
+  });
+}
+
 /* GET home page. */
 var expressSession=require('express-session');
 router.use(expressSession({
@@ -15,7 +25,7 @@ router.use(expressSession({
 
 
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "The Booker's Club", path:'/' });
+  res.render("index", { title: "The Booker's Club", path:'/', req: req.session.loggedin , user: getUser(req.params.id) });
 });
 
 router.get("/books-list", function(req, res, next) {
