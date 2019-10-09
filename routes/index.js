@@ -2,10 +2,11 @@ var express = require("express");
 var router = express.Router();
 var crypto=require('crypto');
 var mongoose=require("mongoose");
+var mcentral=require('mongoose');
 var User=require("../models/user");
 
 /* GET home page. */
-var express1=require('express-sessions');
+
 
 
 router.get("/", function(req, res, next) {
@@ -13,6 +14,7 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/books-list", function(req, res, next) {
+  
   res.render("index", { title: "Books List" });
 });
 
