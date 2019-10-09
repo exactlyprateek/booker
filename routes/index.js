@@ -63,6 +63,16 @@ router.post("/register",(req,res)=>{
     }
   })
 })
+router.get("/view",(req,res)=>{
+  User.find({},(err,found)=>{
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(found);
+    }
+    
+  })
+})
 function isLoggedIn(req,res,next){
   if(req.sessions.loggedin==true)
   next();
