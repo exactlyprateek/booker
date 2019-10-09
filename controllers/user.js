@@ -1,25 +1,11 @@
 var User = require("../models/user");
 var Book = require("../models/book");
 
-function getUser(userId) {
-  User.findById(userId, (err, found) => {
-    if (err) {
-      console.log(err);
-    } else {
-      return found;
-    }
-  });
-}
 
-exports.getProfile = function(req, res, next) {
-  var user = getUser(req.params.id);
 
-  res.render("profile", {
-    title: `Pofile Page`,
-    path: "/user/profile"
-    // user: user
-  });
-};
+// exports.getProfile = function
+
+// };
 
 exports.getSearchResult = function(req, res, next) {
   res.render("searchResults", {
@@ -28,9 +14,7 @@ exports.getSearchResult = function(req, res, next) {
   });
 };
 
-exports.getAddBooks = function(req, res, next) {
-  res.render("addBook", { title: "Add new Books", path: "/user/add-books" });
-};
+//exports.getAddBooks = function
 
 exports.postAddBooks = function(req, res, next) {
   

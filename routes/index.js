@@ -5,16 +5,6 @@ var mongoose=require("mongoose");
 var mcentral=require('mongoose');
 var User=require("../models/user");
 
-function getUser(userId) {
-  User.findById(userId, (err, found) => {
-    if (err) {
-      console.log(err);
-    } else {
-      return found;
-    }
-  });
-}
-
 /* GET home page. */
 var expressSession=require('express-session');
 router.use(expressSession({
@@ -25,7 +15,8 @@ router.use(expressSession({
 
 
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "The Booker's Club", path:'/', req: req , user: getUser(req.params.id) });
+  console.log(req.session.loggedin);
+  res.render("index", { title: "The Booker's Club", path:'/' });
 });
 
 router.get("/books-list", function(req, res, next) {
@@ -37,7 +28,7 @@ router.get("/book-details/:bookId", function(req, res, next) {
 });
 
 router.get("/login",(req,res)=>{
-  res.render("loginPage", {path: '/login'})
+  res.render("loginPage", {path: '/login', isLoggedIn: false});
 })
 router.post("/login",(req,res)=>{
   console.log(req.body.user);
@@ -49,7 +40,7 @@ router.post("/login",(req,res)=>{
       if(crypto.createHash('md5').update(req.body.user.password).digest("hex") == found.password){
         req.session.loggedin=true;
         console.log(found +"error no");
-        res.redirect("/"+found.id)
+        res.redirect("/user/"+found.id+"/?name="+found.name)
       }
       else{
         res.render('error',{message:"Incorrect password"})
@@ -72,7 +63,7 @@ router.post("/register",(req,res)=>{
       console.log('err')
     } else {
       req.session.loggedin=true;
-      res.redirect("/"+found.id);
+      res.redirect("/user/"+found.id);
     }
   })
 })
@@ -87,7 +78,7 @@ router.get("/view",(req,res)=>{
   })
 })
 function isLoggedIn(req,res,next){
-  if(req.sessions.loggedin==true)
+  if(req.session.loggedin==true)
   next();
   else{
     res.render("error",{message:"loggin/register first"});
