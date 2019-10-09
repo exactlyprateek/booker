@@ -1,3 +1,5 @@
+const userController = require('../controllers/user')
+
 var express = require('express');
 var router = express.Router();
 var expressSession=require('express-session');
@@ -17,20 +19,14 @@ var db = mcentral.connection;
 var ObjectID = require('mongodb').ObjectID;
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'User Page' });
+  res.render('index', { title: 'User Page' , path: '/'});
 });
 
-router.get('/profile', function(req, res, next) {
-  res.render('index', { title: 'User Profile' });
-});
+router.get('/profile', userController.getProfile);
 
-router.get('/search-results', function(req, res, next) {
-  res.render('index', { title: 'Search Results' });
-});
+router.get('/search-results', userController.getSearchResult);
 
-router.get('/add-book', function(req, res, next) {
-  res.render('addBook', { title: 'Add new Books' });
-});
+
 router.get("/books-listing", function(req, res, next) {
   Book.find({},(err,found)=>{
     found.forEach((item)=>{
@@ -53,12 +49,11 @@ router.get("/books-by-college", function(req, res, next) {
 
   res.render('index', { title: 'Borrow Books', books:found.matches});
 })});
-router.get('/borrow-books', function(req, res, next) {
-  res.render('index', { title: 'Borrow Books' });
-});
 
-router.get('/checkout', function(req, res, next) {
-  res.render('index', { title: 'Checkout Books' });
-});
+router.get('/add-book', userController.getAddBooks);
+
+router.get('/borrow-books', userController.getBorrowBooks);
+
+router.get('/checkout', userController.getCheckout);
  
 module.exports = router;

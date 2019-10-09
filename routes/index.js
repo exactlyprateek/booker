@@ -10,20 +10,19 @@ var User=require("../models/user");
 
 
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "The Booker's Club" });
+  res.render("index", { title: "The Booker's Club", path:'/' });
 });
 
 router.get("/books-list", function(req, res, next) {
-  
-  res.render("index", { title: "Books List" });
+  res.render("index", { title: "Books List" ,path:'/books-list' });
 });
 
 router.get("/book-details/:bookId", function(req, res, next) {
-  res.render("index", { title: "Book details" });
+  res.render("index", { title: "Book details" ,path:'/book-details/book' });
 });
 
 router.get("/login",(req,res)=>{
-  res.render("login")
+  res.render("loginPage", {path: '/login'})
 })
 router.post("/login",(req,res)=>{
   User.findOne({email:req.body.user.email.toUpperCase()},(err,found)=>{
