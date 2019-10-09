@@ -12,7 +12,7 @@ router.use(expressSession({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'User Page' });
+  res.render('index', { title: 'User Page' , path: '/'});
 });
 
 router.get('/profile', userController.getProfile);
@@ -23,8 +23,6 @@ router.get('/add-book', userController.getAddBooks);
 
 router.get('/borrow-books', userController.getBorrowBooks);
 
-router.get('/checkout', function(req, res, next) {
-  res.render('index', { title: 'Checkout Books' });
-});
+router.get('/checkout', userController.getCheckout);
  
 module.exports = router;
