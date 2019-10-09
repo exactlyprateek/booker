@@ -36,7 +36,7 @@ router.post("/login",(req,res)=>{
       console.log(err);
       console.log(found +"error");
     } else {
-      if(crypto.createHash('md5').update(req.body.user.password).digest("hex") == hash){
+      if(crypto.createHash('md5').update(req.body.user.password).digest("hex") == found.password){
         req.session.loggedin=true;
         console.log(found +"error no");
         res.redirect("/"+found.id)
