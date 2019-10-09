@@ -25,7 +25,7 @@ router.use(expressSession({
 
 
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "The Booker's Club", path:'/', req: req.session.loggedin , user: getUser(req.params.id) });
+  res.render("index", { title: "The Booker's Club", path:'/', req: req , user: getUser(req.params.id) });
 });
 
 router.get("/books-list", function(req, res, next) {
