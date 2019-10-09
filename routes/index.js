@@ -50,6 +50,7 @@ router.get('/register',(req,res)=>{
 router.post("/register",(req,res)=>{
   var user1= req.body.user;
   console.log(user1)
+  user1['email']=user1.email.toUpperCase();
   user1['password']=crypto.createHash('md5').update(user1.password).digest("hex");
   console.log(user1)
   User.create(user1,(err,found)=>{
