@@ -9,6 +9,8 @@ var User = require("../models/user");
 var Book = require("../models/user");
 var rawdata =fs.readFileSync("./data/books.json")
 var data =JSON.parse(rawdata);
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey("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");
 // var Bookorg=require("../models/bookorg")
 router.use(
   expressSession({
@@ -79,8 +81,8 @@ router.get("/search-results", userController.getSearchResult);
 router.get("/books-listing", function(req, res, next) {
   Book.find({}, (err, found) => {
     found.forEach(item => {
-      User.findById(item.seller, (err, found1) => {
-        User.findById(req.params.id, (err, found2) => {
+      User.findOne({name:item.seller}, (err, found1) => {
+        User.findById({name:req.query.name}, (err, found2) => {
           if (found2.college == found1.college) {
             found2.matches.push(found);
             found.save();
