@@ -82,7 +82,7 @@ router.get("/books-listing", function(req, res, next) {
   Book.find({}, (err, found) => {
     found.forEach(item => {
       User.findOne({name:item.seller}, (err, found1) => {
-        User.findById({name:req.query.name}, (err, found2) => {
+        User.findOne({name:req.query.name}, (err, found2) => {
           if (found2.college == found1.college) {
             found2.matches.push(found);
             found.save();
