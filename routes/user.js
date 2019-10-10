@@ -7,10 +7,12 @@ var mongoose = require("mongoose");
 var mcentral = require("mongoose");
 var User = require("../models/user");
 var Book = require("../models/user");
-var rawdata =fs.readFileSync("./data/books.json")
-var data =JSON.parse(rawdata);
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey("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");
+var rawdata = fs.readFileSync("./data/books.json");
+var data = JSON.parse(rawdata);
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(
+  "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"
+);
 // var Bookorg=require("../models/bookorg")
 router.use(
   expressSession({
@@ -45,17 +47,16 @@ var ObjectID = require("mongodb").ObjectID;
 
 router.get("/", isLoggedIn, function(req, res, next) {
   User.findOne({ name: req.query.name }, (err, found) => {
-    console.log(req.params.id);
     if (err || found === null) {
-      // console.log(err);
-      console.log("In error at user router");
+      console.log(err);
     } else {
-      console.log(found);
-      res.render("index", {
+      res.render("book-search", {
         title: "User Page",
         path: "/",
         isLoggedIn: req.session.loggedin,
-        user: found
+        user: found,
+        book1: found.matches,
+        book2: data,
       });
     }
   });
@@ -81,8 +82,8 @@ router.get("/search-results", userController.getSearchResult);
 router.get("/books-listing", function(req, res, next) {
   Book.find({}, (err, found) => {
     found.forEach(item => {
-      User.findOne({name:item.seller}, (err, found1) => {
-        User.findById({name:req.query.name}, (err, found2) => {
+      User.findOne({ name: item.seller }, (err, found1) => {
+        User.findById({ name: req.query.name }, (err, found2) => {
           if (found2.college == found1.college) {
             found2.matches.push(found);
             found.save();
@@ -92,24 +93,30 @@ router.get("/books-listing", function(req, res, next) {
     });
   });
 
-  res.redirect("/books-by-college");
+  res.redirect("/");
 });
-router.get("/books-by-college", function(req, res, next) {
-  User.findById(req.params.id, (err, found) => {
-    res.render("index", { title: "Borrow Books", books: found.matches });
-  });
-});
+
+// router.get("/books-by-college", function(req, res, next) {
+//   User.findOne({ name: req.query.name }, (err, found) => {
+//     res.render("book-search", {
+//       title: "Borrow Books",
+//       book1: found.matches,
+//       book2: data, 
+//       isLoggedIn: req.session.loggedin,
+//       user: found
+//     });
+//   });
+// });
 
 router.get("/add-book", (req, res, next) => {
   User.findOne({ name: req.query.name }, (err, found) => {
     if (err) {
       console.log(err);
     } else {
-
-      db.collection('bookorgs').find({}, (err, foundbk) => {
-        if(err){
+      db.collection("bookorgs").find({}, (err, foundbk) => {
+        if (err) {
           console.log(err);
-        }else {
+        } else {
           console.log(foundbk);
 
           res.render("addBook", {
@@ -120,12 +127,9 @@ router.get("/add-book", (req, res, next) => {
             book: data
           });
         }
-      })
-
+      });
     }
   });
-
-
 });
 
 router.get("/borrow-books", userController.getBorrowBooks);
