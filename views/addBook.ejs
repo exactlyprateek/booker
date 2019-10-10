@@ -38,7 +38,7 @@
             </span>
           </div>
 
-          <form class="contact100-form validate-form">
+          <form class="contact100-form validate-form" action="/user/<%= user._id %>/add-book?name=<%= user.name %>" method="POST">
             <div
               class="wrap-input100 validate-input"
               data-validate="Title is required"
@@ -67,7 +67,7 @@
                   Rate your Book Quality out of 5
                 </option>
 
-                <option  >1</option>
+                <option >1</option>
                 <option >2</option>
                 <option >3</option>
                 <option >4</option>
@@ -94,23 +94,17 @@
             <div disable>
               <input
                 class="input100"
-                type="number"
+                type="string"
                 name="book[seller]"
-                placeholder="Seller"
+                value="<%= user.name %>"
                 hidden
               />
+              <h1><%= user.name %></h1>
               <span class="focus-input100"></span>
             </div>
-            <%var x=0,y=0;%>
-            <%for(var i=0;i<book.length;i++){%>
-            <%if(book[i].title==document.getElementById('one').textContent){%>
-              <%x=book[i].pages;y=book[i].copies;break;}}%>
-
-            
 
             <div class="container-contact100-form-btn">
-              <button type="button" class="contact100-form-btn"  onclick="predict(<%= x%>, <%= y%> )">
-                <%= x%>, <%= y%>
+              <button type="submit" class="contact100-form-btn" >
                 <span>
                   Submit
                   <i
@@ -122,7 +116,7 @@
             </div>
             <div class="">
 
-            <h3 class="" id="predictedPrize">23</h3>
+          
             </div>
           </form>
         </div>
@@ -131,17 +125,6 @@
       <div id="dropDownSelect1"></div>
 
       <script src="/javascripts/addBooks.js"></script>
-      <script>
-      var quality = document.getElementById('quality').value;
-
-function predict(pages,copies){
-  console.log(pages+" "+copies+" "+quality)
-    pages = (pages/1320) * 3;
-    copies = (copies/100000000) * 2;
-    $("#price").value = (pages+copies+quality);
-    $("#predictedPrize").textContent = (pages+copies+quality) + "per-day"; 
- };
-      </script>
     </body>
   </html>
   

@@ -50,14 +50,21 @@ router.get("/", isLoggedIn, function(req, res, next) {
     if (err || found === null) {
       console.log(err);
     } else {
-      res.render("book-search", {
-        title: "User Page",
-        path: "/",
-        isLoggedIn: req.session.loggedin,
-        user: found,
-        book1: found.matches,
-        book2: data,
-      });
+      Book.find({},(err,found1)=>{
+        if(err){
+          console.log(err);
+        } else {
+          console.log(found1);
+          res.render("book-search", {
+            title: "User Page",
+            path: "/",
+            isLoggedIn: req.session.loggedin,
+            user: found,
+            book1: found1,
+            book2: data,
+          });
+        }
+      })
     }
   });
 });
@@ -81,19 +88,31 @@ router.get("/search-results", userController.getSearchResult);
 
 router.get("/books-listing", function(req, res, next) {
   Book.find({}, (err, found) => {
+    console.log(found)
     found.forEach(item => {
       User.findOne({name:item.seller}, (err, found1) => {
+        console.log(found1)
         User.findOne({name:req.query.name}, (err, found2) => {
+          console.log(found2)
           if (found2.college == found1.college) {
             found2.matches.push(found);
             found.save();
           }
+          // res.redirect(`/user/${found.id}?name=${found.name}`);
+          res.render("book-search", {
+            title: "User Page",
+            path: "/",
+            isLoggedIn: req.session.loggedin,
+            user: found2,
+            seller: found1,
+            book1: found.matches,
+            book2: data,
+          });
         });
       });
     });
   });
 
-  res.redirect("/");
 });
 
 // router.get("/books-by-college", function(req, res, next) {
@@ -130,6 +149,26 @@ router.get("/add-book", (req, res, next) => {
       });
     }
   });
+
+});
+
+router.post("/add-book", (req, res, next) => {
+  const book = req.body.book;
+  console.log(book);
+  Book.create(book,(err,found1)=>{
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(found1);
+      User.findOne({name:book.seller},(err,found)=>{
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect(`/user/${found.id}/?name=${found.name}`);
+        }
+      })
+    }
+  })
 });
 
 router.get("/borrow-books", userController.getBorrowBooks);

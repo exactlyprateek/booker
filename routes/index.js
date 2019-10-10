@@ -4,7 +4,7 @@ var crypto=require('crypto');
 var mongoose=require("mongoose");
 var mcentral=require('mongoose');
 var User=require("../models/user");
-
+var Book=require("../models/book");
 /* GET home page. */
 var expressSession=require('express-session');
 router.use(expressSession({
@@ -16,15 +16,17 @@ router.use(expressSession({
 
 router.get("/", function(req, res, next) {
   console.log(req.session.loggedin);
-<<<<<<< HEAD
-  res.render("index", { title: "The Booker's Club", path:'/',  });
-=======
   res.render("index", { title: "The Booker's Club", path:'/', isLoggedIn: req.session.loggedin });
->>>>>>> a1d42bd5ca21624ab7746472ce6d05f926321aab
 });
 
 router.get("/books-list", function(req, res, next) {
   res.render("index", { title: "Books List" ,path:'/books-list', isLoggedIn: req.session.loggedin });
+});
+
+router.get('/delete', (req, res, next) => {
+  Book.deleteMany({},(err,found) => {
+    res.send("done");
+  });
 });
 
 router.get("/login",(req,res)=>{
