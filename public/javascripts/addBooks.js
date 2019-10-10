@@ -1,3 +1,4 @@
+import { prependOnceListener } from "cluster";
 
 (function ($) {
     "use strict";
@@ -66,3 +67,13 @@
     
 
 })(jQuery);
+
+var quality = document.getElementById('quality').value;
+
+predict( pages, copies, quality){
+    pages = (pages/1320) * 3;
+    copies = (copies/100000000) * 2;
+    document.getElementById("price").value = (pages+copies+quality);
+    document.getElementById("predictedPrize").textContent = (pages+copies+quality) + "per-day";
+}
+

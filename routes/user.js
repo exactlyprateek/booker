@@ -1,5 +1,5 @@
 const userController = require("../controllers/user");
-
+var fs = require("fs");
 var express = require("express");
 var router = express.Router();
 var expressSession = require("express-session");
@@ -7,7 +7,9 @@ var mongoose = require("mongoose");
 var mcentral = require("mongoose");
 var User = require("../models/user");
 var Book = require("../models/user");
-var Bookorg=require("../models/bookorg")
+var rawdata =fs.readFileSync("./data/books.json")
+var data =JSON.parse(rawdata);
+// var Bookorg=require("../models/bookorg")
 router.use(
   expressSession({
     secret: "sab ladkiyan rajput ki behen hai",
@@ -102,17 +104,18 @@ router.get("/add-book", (req, res, next) => {
       console.log(err);
     } else {
 
-      Bookorg.find({}, (err, foundbk) => {
+      db.collection('bookorgs').find({}, (err, foundbk) => {
         if(err){
           console.log(err);
         }else {
+          console.log(foundbk);
 
           res.render("addBook", {
             title: "Add new Books",
             path: "/user/add-books",
             isLoggedIn: req.session.loggedin,
             user: found,
-            book: foodbk
+            book: data
           });
         }
       })

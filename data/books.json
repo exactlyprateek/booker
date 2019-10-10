@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "5d9e365a81c0e540f4ccad2e",
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "price": 200,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg",
+    "copies": "65000000",
+    "pages": 162,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e37ea81c0e540f4ccad2f",
+    "title": "Mathematics for Class XI",
+    "author": "RD SHARMA",
+    "description": "The best maths reference book of all time",
+    "price": 459,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/91Gb3OCDHBL.jpg",
+    "pages": 1350,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e39a181c0e540f4ccad30",
+    "title": "Fifty Shades of Grey",
+    "author": "E L James",
+    "price": 222,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51ajirrGHzL._SX323_BO1,204,203,200_.jpg",
+    "copies": "125000000",
+    "pages": 560,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3abb81c0e540f4ccad31",
+    "title": "Harry Potter and the Goblet of Fire ",
+    "author": "JK Rowling",
+    "price": 264,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/516SzpxSeML._SX332_BO1,204,203,200_.jpg",
+    "copies": "6000000",
+    "pages": 450,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3b8381c0e540f4ccad32",
+    "title": "A Game of Thrones ",
+    "author": "George R R Martin",
+    "price": 1400,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/51HoTTx2ZhL._SX327_BO1,204,203,200_.jpg",
+    "copies": "9000000",
+    "pages": 400,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3c2d81c0e540f4ccad33",
+    "title": "The Hunger Games: 1",
+    "author": "Suzanne Collins",
+    "price": 1400,
+    "image": "hhttps://images-na.ssl-images-amazon.com/images/I/41ir9m8QQnL._SX332_BO1,204,203,200_.jpg",
+    "copies": "10000000",
+    "pages": 384,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3cdb81c0e540f4ccad34",
+    "title": "Hardy Boys 01: The Tower Treasure (The Hardy Boys) ",
+    "author": "Franklin Dixon ",
+    "price": 200,
+    "image": "hhttps://images-na.ssl-images-amazon.com/images/I/51kopI661hL._SX309_BO1,204,203,200_.jpg ",
+    "copies": "2000000 ",
+    "pages": 215,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3d3381c0e540f4ccad35",
+    "title": "Sacred Games ",
+    "author": "Vikran Chandra ",
+    "price": 215,
+    "image": "https://images-eu.ssl-images-amazon.com/images/I/51UJKxhocQL.jpg ",
+    "copies": "500000 ",
+    "pages": 400,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e3dd681c0e540f4ccad36",
+    "title": "Concept of Physics Part-1 (2019-2020 Session) by ",
+    "author": "HC Verma ",
+    "price": 275,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/414DVu1B7oL._SX390_BO1,204,203,200_.jpg ",
+    "copies": "100000 ",
+    "pages": 250,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e441c81c0e540f4ccad37",
+    "title": "Think ",
+    "author": "Napolean Hill ",
+    "price": 120,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/41efCgXR5tL._SX321_BO1,204,203,200_.jpg ",
+    "copies": "20000000 ",
+    "pages": 250,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e448c81c0e540f4ccad38",
+    "title": "How to Win Friends and Influence People ",
+    "author": "Dale Carneige ",
+    "price": 99,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/41f8WSwRaaL._SX324_BO1,204,203,200_.jpg ",
+    "copies": "100000000 ",
+    "pages": 150,
+    "__v": 0
+  },
+  {
+    "_id": "5d9e453d81c0e540f4ccad39",
+    "title": "Mein Kampf ",
+    "author": "Adolf Hitler ",
+    "price": 499,
+    "image": "https://images-na.ssl-images-amazon.com/images/I/41awrNtlxkL._SX322_BO1,204,203,200_.jpg ",
+    "copies": "100000000 ",
+    "pages": 350,
+    "__v": 0
+  }
+]

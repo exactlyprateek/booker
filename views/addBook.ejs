@@ -1,4 +1,5 @@
 <%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
 
 <div style="height: 100vh;">
   <!DOCTYPE html>
@@ -55,64 +56,56 @@
 
               <span class="focus-input100"></span>
             </div>
-            <!-- Message -->
 
             <div
-              class="wrap-input100 validate-input"
-              data-validate="Author is required"
+              class="wrap-input100 "
+              data-validate="Quality is required"
             >
-              <span class="label-input100">Author:</span>
-              <input
-                class="input100"
-                type="text"
-                name="book[author]"
-                placeholder="Enter the name of the author"
-              />
-              <span class="focus-input100"></span>
+              <span class="label-input100">Title:</span>
+              <select tabIndex="-1" name="book[quality]" id="quality" required>
+                <option value="" name="" selected="selected" disabled="disabled">
+                  Rate your Book Quality out of 5
+                </option>
+
+                <option >1</option>
+                <option >2</option>
+                <option >3</option>
+                <option >4</option>
+                <option >5</option>
+                
+              </select>
+
+              
             </div>
 
-            <div
-              class="wrap-input100 validate-input"
-              data-validate=" Language name is required"
-            >
-              <span class="label-input100">Language:</span>
+            <div disable>
               <input
-                class="input100"
-                type="text"
-                name="book[language]"
-                placeholder="Enter language "
-              />
-              <span class="focus-input100"></span>
-            </div>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Description is required"
-            >
-              <span class="label-input100">Description:</span>
-              <textarea
-                class="input100"
-                name="book[description]"
-                placeholder="Add a short description for your book"
-              ></textarea>
-              <span class="focus-input100"></span>
-            </div>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Price is required"
-            >
-              <span class="label-input100">Price:</span>
-              <input
+                id="price",
                 class="input100"
                 type="number"
                 name="book[price]"
+                value=,
                 placeholder="Enter price in rupees"
+                hidden
               />
               <span class="focus-input100"></span>
             </div>
+
+            <div disable>
+              <input
+                class="input100"
+                type="number"
+                name="book[seller]"
+                placeholder="Seller"
+                hidden
+              />
+              <span class="focus-input100"></span>
+            </div>
+
+            
+
             <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn">
+              <button onclick="predict(<%= book.pages %>, <%= book.copies %> )" class="contact100-form-btn">
                 <span>
                   Submit
                   <i
@@ -122,6 +115,8 @@
                 </span>
               </button>
             </div>
+
+            <h3 id="predictedPrize"></h2>
           </form>
         </div>
       </div>
@@ -131,6 +126,7 @@
       <script src="/javascripts/addBooks.js"></script>
     </body>
   </html>
-
+  
+  </div>
+  <%- include('includes/footer.ejs') %>
   <%- include('includes/end.ejs') %>
-</div>
