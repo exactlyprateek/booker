@@ -16,15 +16,11 @@ router.use(expressSession({
 
 router.get("/", function(req, res, next) {
   console.log(req.session.loggedin);
-  res.render("index", { title: "The Booker's Club", path:'/' });
+  res.render("index", { title: "The Booker's Club", path:'/', isLoggedIn: req.session.loggedin });
 });
 
 router.get("/books-list", function(req, res, next) {
-  res.render("index", { title: "Books List" ,path:'/books-list' });
-});
-
-router.get("/book-details/:bookId", function(req, res, next) {
-  res.render("index", { title: "Book details" ,path:'/book-details/book' });
+  res.render("index", { title: "Books List" ,path:'/books-list', isLoggedIn: req.session.loggedin });
 });
 
 router.get("/login",(req,res)=>{
