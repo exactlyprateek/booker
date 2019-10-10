@@ -63,6 +63,18 @@ router.post("/register",(req,res)=>{
       console.log('err')
     } else {
       req.session.loggedin=true;
+      var text="Hey "+found.name+", Thank you for signing up on Booker's club. Your can rent a book here and save money rather than buying expensive books . Happy reading!!! Regards, Team Booker's Club"; 
+      var texthtm="Hey "+req.user.username+",<br> Thank you for signing up on Booker's club. Your can rent a book here and save money rather than buying expensive books .<br> <center><bold><h4>Happy reading!!!</h4></bold></center><br> Regards,<br> Team Booker's Club"; 
+      console.log(text)
+        const msg = {
+          to:req.user.username,
+          from: 'mayankkapur556@gmail.com',
+          subject: 'Welcome to Bookers club',
+          text: text,
+          html:texthtm
+          
+        };
+        sgMail.send(msg);
       res.redirect("/user/"+found.id);
     }
   })
