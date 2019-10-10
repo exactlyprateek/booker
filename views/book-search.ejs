@@ -1,0 +1,85 @@
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
+
+<main class="page">
+  <section class="container" style=" margin-top: 2%;">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Books"
+        aria-label="Books"
+        aria-describedby="basic-addon2"
+        style=" border-radius: 20px 0px 0px 20px"
+      />
+      <div class="input-group-append">
+        <button
+          class="input-group-text btn btn-secondary"
+          id="basic-addon2"
+          style=" border-radius: 0px 20px 20px 0px;"
+        >
+          booker
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="row" style="margin-left: 2%">
+    <section class="col-md-9">
+      <div class="row">
+        
+        <% book1.forEach(bk => { %>
+            
+            <div class="col-10 col-md-3 book no-gutters">
+              <div class="card" style="width: 100%;">
+                <img
+                  class="card-img-top"
+                  src="/images/book3.jpg"
+                  alt="Card image"
+                  style="width:100%"
+                />
+                <div class="card-body">
+                  <h4 class="card-title"><%= bk.title %></h4>
+                  <p class="card-text"><%= bk.descripton %></p>
+                  <a href="#" class="btn btn-primary btn-dark">Get This Book</a>
+                </div>
+              </div>
+            </div>
+        <% }); %>
+       
+      </div>
+    </section>
+    <section class="col-md-3">
+      <div class="">
+        <div class="card" style="margin: 20px">
+          <img
+            class="card-img-top"
+            src="/images/book3.jpg"
+            alt="Card image"
+            style="width:100%"
+          />
+          <div class="card-body">
+            <h4 class="card-title"><%= user.name %></h4>
+            <p class="card-text">Your Orders</p>
+            <ul>
+              <li>
+                <div>
+                  <h4>Book 1 name</h4>
+                  <p>Book 1 desc</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h4>Book 2 name</h4>
+                  <p>Book 2 desc</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<%- include('includes/footer.ejs') %>
+<%- include('includes/end.ejs') %>
